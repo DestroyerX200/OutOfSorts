@@ -4,5 +4,19 @@ public class Sorts {
 	*@param data  the elements to be sorted.
 	*/
 	public static void bubbleSort(int[] data) {
+		boolean isSorted = false;
+		int j = data.length;
+		while (!isSorted) {
+			isSorted = true;
+			for (int i = 0; i < j-1; i++) {
+				if (data[i] > data[i+1] ) {
+					int temp = data[i];
+					data[i] = data[i+1];
+					data[i+1] = temp;
+					isSorted = false;
+				}
+			}
+			j--;
+		}
 	}
 }
