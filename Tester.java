@@ -63,23 +63,23 @@ public class Tester {
 			int[] expectedArray = Arrays.copyOf(originalArray, originalArray.length);
 			Arrays.sort(expectedArray);
 
-			// System.out.println("Random Original Array: " + Arrays.toString(originalArray));
-			// System.out.println("Expected Array       : " + Arrays.toString(expectedArray));
-			// System.out.println("My Array             : " + Arrays.toString(myArray));
+			System.out.println("Random Original Array: " + Arrays.toString(originalArray));
+			System.out.println("Expected Array       : " + Arrays.toString(expectedArray));
+			System.out.println("My Array             : " + Arrays.toString(myArray));
 
-			// if (Arrays.equals(expectedArray, myArray)) {
-			// 	System.out.println("Success!");
-			// 	System.out.println();
-			// } else {
-			// 	System.out.println("NOT equivalent!");
-			// 	System.out.println();
-			// }
-		// 	if (numFails == 0) {
-		// 	System.out.println("Nice, passed all tests!");
-		// } else {
-		// 	System.out.println(numFails + " tests failed.");
-		// }
+			if (Arrays.equals(expectedArray, myArray)) {
+				System.out.println("Success!");
+				System.out.println();
+			} else {
+				System.out.println("NOT equivalent!");
+				System.out.println();
+			}
 		}
+		if (numFails == 0) {
+		System.out.println("Nice, passed all tests!");
+		} else {
+			System.out.println(numFails + " tests failed.");
+			}
 	}
 	public static void testInsertionSort(int sizeOfArray, int numberOfTests) {
 		int numFails = 0;
@@ -113,11 +113,22 @@ public class Tester {
 				System.out.println("NOT equivalent!");
 				System.out.println();
 			}
-			if (numFails == 0) {
-			System.out.println("Nice, passed all tests!");
-			} else {
+		}
+		if (numFails == 0) {
+		System.out.println("Nice, passed all tests!");
+		} else {
 			System.out.println(numFails + " tests failed.");
-				}
+			}
+	}
+	public static void test(int sizeOfArray, int numberOfTests, String testType) {
+		if (testType.equals("bubble")) {
+			testBubbleSort(sizeOfArray, numberOfTests);
+		}
+		if (testType.equals("selection")) {
+			testSelectionSort(sizeOfArray, numberOfTests);
+		}
+		if (testType.equals("insertion")) {
+			testInsertionSort(sizeOfArray, numberOfTests);
 		}
 	}
 	public static void main(String[] args) {
@@ -154,8 +165,10 @@ public class Tester {
 
 		// testSelectionSort(15, 1);
 
-		// int size = Integer.parseInt(args[0]);
+		int size = Integer.parseInt(args[0]);
+		String type = args[1];
 		// testBubbleSort(size, 1);
-		testInsertionSort(100, 100);
+		// testInsertionSort(size, 1);
+		test(size, 1, type);
 	}
 }
