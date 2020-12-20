@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Collections;
 public class Tester {
 	public static void testBubbleSort(int sizeOfArray, int numberOfTests) {
+		int numFails = 0;
 		for (int i = 0; i < numberOfTests; i++) {
 			Random rng = new Random(i);
 			int[] originalArray = new int[sizeOfArray];
@@ -20,7 +21,7 @@ public class Tester {
 			Sorts.bubbleSort(myArray);
 
 			int[] expectedArray = Arrays.copyOf(originalArray, originalArray.length);
-			Collections.sort(expectedArray);
+			Arrays.sort(expectedArray);
 
 			System.out.println("Random Original Array: " + Arrays.toString(originalArray));
 			System.out.println("Expected Array       : " + Arrays.toString(expectedArray));
@@ -32,10 +33,17 @@ public class Tester {
 			} else {
 				System.out.println("NOT equivalent!");
 				System.out.println();
+				numFails++;
 			}
+		}
+		if (numFails == 0) {
+			System.out.println("Nice, passed all tests!");
+		} else {
+			System.out.println(numFails + " tests failed.");
 		}
 	}
 	public static void testSelectionSort(int sizeOfArray, int numberOfTests) {
+		int numFails = 0;
 		for (int i = 0; i < numberOfTests; i++) {
 			Random rng = new Random(i);
 			int[] originalArray = new int[sizeOfArray];
@@ -53,7 +61,7 @@ public class Tester {
 			Sorts.selectionSort(myArray);
 
 			int[] expectedArray = Arrays.copyOf(originalArray, originalArray.length);
-			Collections.sort(expectedArray);
+			Arrays.sort(expectedArray);
 
 			// System.out.println("Random Original Array: " + Arrays.toString(originalArray));
 			// System.out.println("Expected Array       : " + Arrays.toString(expectedArray));
@@ -66,6 +74,50 @@ public class Tester {
 			// 	System.out.println("NOT equivalent!");
 			// 	System.out.println();
 			// }
+		// 	if (numFails == 0) {
+		// 	System.out.println("Nice, passed all tests!");
+		// } else {
+		// 	System.out.println(numFails + " tests failed.");
+		// }
+		}
+	}
+	public static void testInsertionSort(int sizeOfArray, int numberOfTests) {
+		int numFails = 0;
+		for (int i = 0; i < numberOfTests; i++) {
+			Random rng = new Random(i);
+			int[] originalArray = new int[sizeOfArray];
+
+			for (int j = 0; j < sizeOfArray; j++) {
+				int randomParity = new Random().nextInt() % 2;
+				int negativeOrNot = -1;
+				if (randomParity == 0) {
+					negativeOrNot = 1;
+				}
+				originalArray[j] = rng.nextInt() % 100000 * negativeOrNot; 
+			}
+
+			int[] myArray = Arrays.copyOf(originalArray, originalArray.length);
+			Sorts.selectionSort(myArray);
+
+			int[] expectedArray = Arrays.copyOf(originalArray, originalArray.length);
+			Arrays.sort(expectedArray);
+
+			System.out.println("Random Original Array: " + Arrays.toString(originalArray));
+			System.out.println("Expected Array       : " + Arrays.toString(expectedArray));
+			System.out.println("My Array             : " + Arrays.toString(myArray));
+
+			if (Arrays.equals(expectedArray, myArray)) {
+				System.out.println("Success!");
+				System.out.println();
+			} else {
+				System.out.println("NOT equivalent!");
+				System.out.println();
+			}
+			if (numFails == 0) {
+			System.out.println("Nice, passed all tests!");
+			} else {
+			System.out.println(numFails + " tests failed.");
+				}
 		}
 	}
 	public static void main(String[] args) {
@@ -102,7 +154,8 @@ public class Tester {
 
 		// testSelectionSort(15, 1);
 
-		int size = Integer.parseInt(args[0]);
-		testBubbleSort(size, 1);
+		// int size = Integer.parseInt(args[0]);
+		// testBubbleSort(size, 1);
+		testInsertionSort(100, 100);
 	}
 }
