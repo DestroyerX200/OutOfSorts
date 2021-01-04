@@ -42,8 +42,8 @@ public class Sorts {
 		for (int i = 1; i < data.length; i++) {
 			int current = data[i];
 			int j = i;
-			while (current < data[j-1]) {
-				data[j-1] = data[j];
+			while (j > 0 && current < data[j-1]) {
+				data[j] = data[j-1];
 				j--;
 			}
 			data[j] = current;
