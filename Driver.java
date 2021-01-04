@@ -16,7 +16,6 @@ public class Driver{
           int randomValue = (int) ((Math.random() - 0.5) * randData.length);
           randData[i] = randomValue;
         }
-	      System.out.println("REPLACE THIS LINE WITH ARRAY VALUE GENERATION!");
       }else if(args[2].equals("equal")){
 	      System.out.println("REPLACE THIS LINE WITH ARRAY VALUE GENERATION!");
       }else if(args[2].equals("sorted")){
