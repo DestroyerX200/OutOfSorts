@@ -22,9 +22,13 @@ public class Driver{
           randData[i] = randomValue;
         }
       }else if(args[2].equals("sorted")){
-	      System.out.println("REPLACE THIS LINE WITH ARRAY VALUE GENERATION!");
+	      for (int i = 0; i < randData.length; i++) {
+          randData[i] = i;
+        }
       }else if(args[2].equals("reversed")){
-	      System.out.println("REPLACE THIS LINE WITH ARRAY VALUE GENERATION!");
+	      for (int i = 0; i < randData.length; i++) {
+          randData[i] = randData.length - i;
+        }
       }
 
       if(args[1].equals("bubble")){
